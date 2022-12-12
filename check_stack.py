@@ -8,27 +8,32 @@ def list_to_str():
 
 
 def check_stack(stack):
-    square_bracket = 0 # Квадратная скобка
-    round_backet = 0 # Круглая скобка
-    figurate_backet = 0 # Фигурная скобка
+
+    data_list_stack = []
 
     for i in stack:
-        if i == '[':
-            square_bracket += 1
-        if i == ']':
-            square_bracket -= 1
-
         if i == '(':
-            round_backet += 1
+            data_list_stack.append(i)
         if i == ')':
-            round_backet -= 1
+            len_new_list = len(data_list_stack) - 1
+            if data_list_stack[len_new_list] == '(':
+                data_list_stack.pop()
+
+        if i == '[':
+            data_list_stack.append(i)
+        if i == ']':
+            len_new_list = len(data_list_stack) - 1
+            if data_list_stack[len_new_list] == '[':
+                data_list_stack.pop()
 
         if i == '{':
-            figurate_backet += 1
+            data_list_stack.append(i)
         if i == '}':
-            figurate_backet -= 1
+            len_new_list = len(data_list_stack) - 1
+            if data_list_stack[len_new_list] == '{':
+                data_list_stack.pop()
 
-    if square_bracket + round_backet + figurate_backet == 0:
+    if len(data_list_stack) == 0:
         print('Сбалансированно')
     else:
         print('Несбалансированно')
