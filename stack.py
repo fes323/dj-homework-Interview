@@ -5,9 +5,9 @@ class Stack():
 
     def is_empty(self) -> bool:
         if len(self.stack) == 0:
-            return print(False)
-        else:
             return print(True)
+        else:
+            return print(False)
 
     def push(self, new_element):
         self.stack.append(new_element)
